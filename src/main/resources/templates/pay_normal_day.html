@@ -1,0 +1,66 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--	<head>-->
+<!--	<meta charset="ISO-8859-1 ">-->
+<!--		<title>Student Managment Sytem</title>-->
+<!--		<link rel="stylesheet" href="../static/styles.css">-->
+<!--	</head>-->
+<!--	<body>-->
+<!--	<th:block th:include="navBar"></th:block>-->
+<!--&lt;!&ndash;	<th:block th:include="nav-bar"></th:block>&ndash;&gt;-->
+<!--		<h1>Pay</h1>-->
+<!--		<form th:action="@{/payNormalDay}" th:object="${normalDay}" method="post">-->
+<!--			<input type="hidden" th:field="*{id}">=-->
+<!--			<input type="text" readonly th:field="*{numberPlate}">-->
+<!--			<input type="text" readonly th:field="*{entryTime}">-->
+<!--			<input th:value="${#authentication.name}" name="user" type="hidden">-->
+<!--			<button type="submit">Save</button>-->
+<!--		</form>-->
+<!--	</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Student Management System</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../static/styles.css"> <!-- Your custom CSS -->
+	<style>
+		/* Custom CSS for the form */
+		.custom-form {
+			background-color: #343a40; /* Dark background color */
+			color: white; /* Text color */
+			padding: 20px;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body class="bg-dark">
+<th:block th:include="navBar"></th:block>
+<div class="container mt-5">
+	<div class="custom-form">
+		<h1>Pay</h1>
+		<label class="display-4" th:text="'Amount = ' + *{toPay}"></label>
+		<form th:action="@{/payNormalDay}" th:object="${normalDay}" method="post" class="needs-validation" novalidate>
+			<div class="form-group">
+				<label for="numberPlate">Number Plate</label>
+				<input type="text" readonly class="form-control" id="numberPlate" th:field="*{numberPlate}">
+			</div>
+			<div class="form-group">
+				<label for="entryTime">Entry Time</label>
+				<input type="text" readonly class="form-control" id="entryTime" th:field="*{entryTime}">
+			</div>
+			<input type="hidden" th:field="*{id}">
+			<input type="hidden" th:value="${#authentication.name}" name="user">
+			<button type="submit" class="btn btn-primary">Save</button>
+		</form>
+	</div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

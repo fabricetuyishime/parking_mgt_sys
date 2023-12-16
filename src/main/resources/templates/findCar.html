@@ -1,0 +1,128 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en" xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
+<!--&lt;!&ndash;	<head>&ndash;&gt;-->
+<!--&lt;!&ndash;	<meta charset="ISO-8859-1 ">&ndash;&gt;-->
+<!--&lt;!&ndash;		<title>Student Managment Sytem</title>&ndash;&gt;-->
+<!--&lt;!&ndash;		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+YVumpLpZ6je3+y4IG5XpSNRdWA3b0I+EBuwELh/0T0sAVf" crossorigin="anonymous">&ndash;&gt;-->
+<!--&lt;!&ndash;		<link rel="stylesheet" href="../static/styles.css">&ndash;&gt;-->
+
+<!--&lt;!&ndash;	</head>&ndash;&gt;-->
+<!--&lt;!&ndash;	<body>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;	<th:block th:include="nav-bar"></th:block>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;		<h1>Save Car</h1>&ndash;&gt;-->
+<!--&lt;!&ndash;		<form th:object="${normalDay}" th:action="@{/foundCar}">&ndash;&gt;-->
+<!--&lt;!&ndash;			<input type="text" name="plate" >&ndash;&gt;-->
+<!--&lt;!&ndash;			<input type="submit">&ndash;&gt;-->
+<!--&lt;!&ndash;		</form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;		<label th:text="*{toPay}"></label>&ndash;&gt;-->
+<!--&lt;!&ndash;		<form th:action="@{/payNormalDay}" th:object="${normalDay}" method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;			<input type="hidden" th:field="*{id}">=&ndash;&gt;-->
+<!--&lt;!&ndash;			<input type="text" readonly th:field="*{numberPlate}">&ndash;&gt;-->
+<!--&lt;!&ndash;			<input type="text" readonly th:field="*{entryTime}">&ndash;&gt;-->
+<!--&lt;!&ndash;			<input th:value="${#authentication.name}" name="user" type="hidden">&ndash;&gt;-->
+<!--&lt;!&ndash;			<button type="submit">Save</button>&ndash;&gt;-->
+<!--&lt;!&ndash;		</form>&ndash;&gt;-->
+<!--&lt;!&ndash;		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-e8+3mDkhuAeKs4v0tqG5L5S6Kb0HvPL3r+omGCjFhXoqdS6szrVbd4DkPhYY5T3P" crossorigin="anonymous"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;	</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--	<meta charset="UTF-8">-->
+<!--	<title>Student Management System</title>-->
+<!--	&lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+YVumpLpZ6je3+y4IG5XpSNRdWA3b0I+EBuwELh/0T0sAVf" crossorigin="anonymous">-->
+<!--	</head>-->
+<!--<body>-->
+<!--<th:block th:include="navBar"></th:block>-->
+<!--<h1>Save Car</h1>-->
+<!--<form th:object="${normalDay}" th:action="@{/foundCar}" class="needs-validation" novalidate>-->
+<!--	<div class="mb-3">-->
+<!--		<label for="plate" class="form-label">Plate</label>-->
+<!--		<input type="text" name="plate" class="form-control" id="plate" required>-->
+<!--		<div class="invalid-feedback">-->
+<!--			Please provide a valid plate number.-->
+<!--		</div>-->
+<!--	</div>-->
+<!--	<button class="btn btn-primary" type="submit">Submit</button>-->
+<!--</form>-->
+
+<!--<label th:text="*{toPay}"></label>-->
+<!--<form th:action="@{/payNormalDay}" th:object="${normalDay}" method="post" class="needs-validation" novalidate>-->
+<!--	&lt;!&ndash; Your existing form fields &ndash;&gt;-->
+
+<!--	<button type="submit" class="btn btn-primary">Save</button>-->
+<!--</form>-->
+
+<!--&lt;!&ndash; Bootstrap JS for form validation &ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-e8+3mDkhuAeKs4v0tqG5L5S6Kb0HvPL3r+omGCjFhXoqdS6szrVbd4DkPhYY5T3P" crossorigin="anonymous"></script>-->
+
+<!--<script>-->
+<!--	// JavaScript to enable Bootstrap form validation-->
+<!--	(function () {-->
+<!--		'use strict'-->
+
+<!--		// Fetch all the forms we want to apply custom Bootstrap validation styles to-->
+<!--		var forms = document.querySelectorAll('.needs-validation')-->
+
+<!--		// Loop over them and prevent submission-->
+<!--		Array.prototype.slice.call(forms)-->
+<!--				.forEach(function (form) {-->
+<!--					form.addEventListener('submit', function (event) {-->
+<!--						if (!form.checkValidity()) {-->
+<!--							event.preventDefault()-->
+<!--							event.stopPropagation()-->
+<!--						}-->
+
+<!--						form.classList.add('was-validated')-->
+<!--					}, false)-->
+<!--				})-->
+<!--	})()-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student Management System</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+YVumpLpZ6je3+y4IG5XpSNRdWA3b0I+EBuwELh/0T0sAVf" crossorigin="anonymous">
+</head>
+
+<body>
+<th:block th:include="navBar"></th:block>
+
+<div class="container mt-4">
+	<h1>Save Car</h1>
+
+	<!-- Form 1 -->
+	<form th:object="${normalDay}" th:action="@{/foundCar}" class="needs-validation" novalidate>
+		<div class="mb-3">
+			<label for="plate" class="form-label">Plate</label>
+			<input type="text" name="plate" class="form-control" id="plate" required>
+			<div class="invalid-feedback">
+				Please provide a valid plate number.
+			</div>
+		</div>
+		<button class="btn btn-primary" type="submit">Submit</button>
+	</form>
+
+	<label th:text="*{toPay}"></label>
+
+	<!-- Form 2 -->
+	<form th:action="@{/payNormalDay}" th:object="${normalDay}" method="post" class="mt-4 needs-validation" novalidate>
+		<!-- Your existing form fields -->
+
+		<button type="submit" class="btn btn-primary">Save</button>
+	</form>
+</div>
+
+<!-- Bootstrap JS and dependencies (placed at the end for faster page load) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+
+</html>

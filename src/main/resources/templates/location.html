@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        background-color: #343a40; /* Dark background color */
+        color: white; /* Text color */
+    }
+</style>
+<body>
+<div class="bg-dark bg-gradient text-white" >
+    <th:block th:include="navBar"></th:block>
+    <div class="container">
+        <h2>Location</h2>
+    <header class="panel-heading">
+        Location Form
+    </header>
+    <form id="myForm" class="needs-validation" novalidate th:action="@{/locationSave}" th:object="${location}" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" required placeholder="Enter the name of the location"  th:field="*{locationName}">
+            <div class="invalid-feedback">Please enter your name.</div>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" id="noSpots" name="noSpots" required placeholder="Enter the number of spots" th:field="*{noOfParkingSpots}">
+            <div class="invalid-feedback">Please enter a valid name.</div>
+        </div>
+        <input type="hidden" th:field="*{id}" >
+        <!-- <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+            <div class="invalid-feedback">Please enter a message.</div>
+        </div> -->
+        <button type="submit" class="btn btn-success">Save Location</button>
+    </form>
+
+    <hr>
+
+    <!-- Table -->
+    <div class="form-check-inline mt-4 ">
+
+    </div>
+        <div class="row">
+            <div class="col-lg-10">
+                <section class="panel">
+                    <div class="container">
+                        <div class="row justify-content-end">
+                            <div class="col-auto">
+                                <form class="d-flex" role="search" th:action="@{/pageSearchLocation/1?sortField=locationName&sortDir=asc}" method="post">
+                                    <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <header class="panel-heading">
+                    List of Locations
+                </header>
+
+                <table class="table table-striped table-advance table-hover text-white">
+                    <thead>
+                    <tr>
+                        <th><a th:href="@{'/pageLocation/' + ${currentPage} + '?sortField=locationName&sortDir=' + ${reverseSortDir}}">Name</a></th>
+                    <th><a th:href="@{'/pageLocation/' + ${currentPage} + '?sortField=noOfParkingSpots&sortDir=' + ${reverseSortDir}}">No of spots</a></th>
+                    <th><a th:href="@{'/pageLocation/' + ${currentPage} + '?sortField=availableSpots&sortDir=' + ${reverseSortDir}}">Available spots</a></th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody >
+                        <tr th:each="location:${locationList}">
+                                    <td th:text="${location.locationName}"></td>
+                                    <td th:text="${location.noOfParkingSpots}"></td>
+                                    <td th:text="${location.availableSpots}"></td>
+
+                                    <td><a class="btn btn-primary" th:href="@{/locationUpdate/{id}(id=${location.id})}">update</a>
+                                        <a class="btn btn-danger" th:href="@{/locationDelete/{id}(id=${location.id})}">Delete</a></td>
+                                </tr>
+                        </tbody>
+    </table>
+            </section>
+</div>
+            <div th:if="${totalPages > 1}" class="text-center">
+                <div>
+                    Total Rows: [[${totalItems}]]
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{'/pageLocation/' + ${i} + '?sortField=locationName&sortDir=' + ${reverseSortDir}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp;&nbsp;
+                    </span>
+
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/pageLocation/' + ${currentPage + 1} + '?sortField=locationName&sortDir=' + ${reverseSortDir}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span>
+
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/pageLocation/' + ${totalPages} + '?sortField=locationName&sortDir=' + ${reverseSortDir}}">Last</a>
+                    <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // JavaScript for form submission using fetch
+    (function () {
+        'use strict';
+
+        var form = document.getElementById('myForm');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            // Your custom validations here
+            var nameInput = document.getElementById('name');
+            var noSpotsInput = document.getElementById('noSpots');
+
+            // Example custom validation (you can add more validations)
+            if (nameInput.value.length < 3 || noSpotsInput.value <= 0) {
+                alert('Please enter valid data.');
+                return;
+            }
+
+            // If custom validations pass, trigger default form submission
+            form.submit();
+
+            form.reset();
+            form.classList.remove('was-validated');
+        }, false);
+    })();
+</script>
+
+</body>
+
+</html>

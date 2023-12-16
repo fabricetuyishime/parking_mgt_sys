@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+
+
+
+<body>
+
+<header>
+<!--    <div class="sidebar">-->
+<!--        <nav>-->
+<!--            <ul>-->
+<!--                <li><a th:href="@{/home}">Home</a></li>-->
+<!--                <li><a th:href="@{/listNormalDay}">Cars</a></li>-->
+<!--                <li><a th:href="@{/locationPage}">Location</a></li>-->
+<!--                &lt;!&ndash; Other menu items &ndash;&gt;-->
+<!--                <li class="dropdown">-->
+<!--                    <span th:text="${#authentication.name}" class="dropbtn" name="user" th:value="${#authentication.name}"></span>-->
+<!--                    <div class="dropdown-content">-->
+<!--                        <a th:href="@{/logout}">Logout</a>-->
+<!--                        <a href="#">Profile</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </div>-->
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">ParkMIS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/locationPage}">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/admin/userInfoPage}">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/listNormalDay}">Cars</a>
+                </li>
+
+            </ul>
+
+            <div class="collapse navbar-collapse" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Other navigation links here -->
+            </ul>
+            <div class="ml-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:text="${#authentication.name}"></a>
+                </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

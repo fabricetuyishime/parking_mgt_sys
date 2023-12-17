@@ -23,7 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return  http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/welcome","/forgotPage").permitAll().and()
+                .requestMatchers("/welcome","/forgotPage","/register").permitAll().and()
                 .authorizeHttpRequests()
                 .requestMatchers("/**")
                 .authenticated()
@@ -32,6 +32,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/admin/**")
                 .hasRole("ADMIN").and().build();
+//           return http.csrf().disable()
+//                .authorizeRequests()
+//                .requestMatchers("/welcome", "/forgotPage", "/register").permitAll()
+//                .requestMatchers("/**").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll().and().build();
+
 
     }
     @Bean
